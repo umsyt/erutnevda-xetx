@@ -14,12 +14,20 @@ exits = {"cr":{"d" : "dr", "w": "wr"},
         "dr":{"d" : "wr", "w": "cr"},
         "wr":{"d" : "cr", "w": "dr"},
         "dar":{"k" : "dr"},
-        "dkr":{"a" : "dr"}}
+        "dkr":{"a" : "dr"},
+        "war":{"d" : "car", "w" : "dar"},
+        "wkr":{"d" : "ckr", "w" : "dkr"},
+        "car":{"d" : "dar", "w" : "war"},
+        "ckr":{"d" : "dkr", "w" : "wkr"}}
 desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "wr":"Also dark. There seems to be a switch which you can [toggle].",
         "dr":"A [keypad] and a device.",
         "dar":"Nothing but a scrap of [paper].",
-        "dkr":"Another [keypad]? This one has a full keyboard."}
+        "dkr":"Another [keypad]? This one has a full keyboard.",
+        "war":"nothing yet. war",
+        "car":"nothing yet. car",
+        "wkr":"nothing yet. wkr",
+        "ckr":"nothing yet. ckr"}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -27,7 +35,7 @@ abrv = {"d": "[d]eosil",
 
 print("""
 BRAINDOWN: THE INTERACTIVE FRICTION
-v.0.1.4 (2 puzzles!)
+v.0.2.1 (all rooms?)
 Welcome, dear traveler to-
 to...
 Honestly, I don't know where.
@@ -113,11 +121,16 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
   
   if rp("key","dkr"):
     if act[1] == (woah[::-1] + chr(121)):
-      print("You feel yourself shimmer out...\nYou're free for now...")
-      solved = True
+      print("You hear many doors shutter open.")
+      exits["dar"]["w"] = "car"
+      exits["dar"]["d"] = "war"
+      exits["dkr"]["w"] = "ckr"
+      exits["dkr"]["d"] = "wkr"
+
+  if act[0] == "letmeoutp":
+    solved = True
 
 
 print("""\n come back soon...
-- NEW ROOMS!
 - MORE PUZZLES!!
 - A STORY MAYBE!!!""")
