@@ -2,6 +2,7 @@ import random
 code = random.randint(1000,9999)
 solved = False
 switc = False
+woah = "retsym"
 
 def parse(quer):
   inp = input(quer)
@@ -16,7 +17,9 @@ exits = {"cr":{"d" : "dr", "w": "wr"},
         "dkr":{"a" : "dr"}}
 desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "wr":"Also dark. There seems to be a switch which you can [toggle].",
-        "dr":"A [keypad] and a device."}
+        "dr":"A [keypad] and a device.",
+        "dar":"Nothing but a scrap of [paper].",
+        "dkr":"Another [keypad]? This one has a full keyboard."}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -24,7 +27,7 @@ abrv = {"d": "[d]eosil",
 
 print("""
 BRAINDOWN: THE INTERACTIVE FRICTION
-v.0.1.0 (now we're cookin!)
+v.0.1.4 (2 puzzles!)
 Welcome, dear traveler to-
 to...
 Honestly, I don't know where.
@@ -91,6 +94,27 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
     else:
       print("The keypad gives a curt beep.")
   
+  if rp("paper","dar"):
+    print("""
+    It reads:
+
+    pain = "misery"
+    fear = "death"
+    love = "insanity"
+    # Now hear my laboured breath...
+    key = pain[0] + love[-1] + pain[2] + fear[-2] + pain[3:]
+    #the key will let you out...
+
+    Odd.
+    """)
+
+  if rp("keypad","dkr"):
+    print("give me da [key <string>]!!! >.< ")
+  
+  if rp("key","dkr"):
+    if act[1] == (woah[::-1] + chr(121)):
+      print("You feel yourself shimmer out...\nYou're free for now...")
+      solved = True
 
 
 print("""\n come back soon...
