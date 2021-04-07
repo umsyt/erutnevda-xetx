@@ -11,10 +11,12 @@ def parse(quer):
 me = {"loc": "cr"}
 exits = {"cr":{"d" : "dr", "w": "wr"},
         "dr":{"d" : "wr", "w": "cr"},
-        "wr":{"d" : "cr", "w": "dr"}}
+        "wr":{"d" : "cr", "w": "dr"},
+        "dar":{"k" : "dr"},
+        "dkr":{"a" : "dr"}}
 desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "wr":"Also dark. There seems to be a switch which you can [toggle].",
-        "dr":"A [keypad] and a door."}
+        "dr":"A [keypad] and a device."}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -22,7 +24,7 @@ abrv = {"d": "[d]eosil",
 
 print("""
 BRAINDOWN: THE INTERACTIVE FRICTION
-v.0.0.2 (three rooms?)
+v.0.1.0 (now we're cookin!)
 Welcome, dear traveler to-
 to...
 Honestly, I don't know where.
@@ -80,8 +82,12 @@ while not solved and not tvtsr:
   
   if rp("code","dr"):
     if act[1] == str(code):
-      print("The door opens...\nYou are free!\n for now...")
-      solved = True
+      print("The device whirrs...")
+      exits["dr"]["a"] = "dar"
+      exits["dr"]["k"] = "dkr"
+      print("""           \033[1m
+        ! You have activated the Tetramove Operation System !
+You can now move in directions [a]na and [k]ata in TOS enabled rooms                            \033[0m""")
     else:
       print("The keypad gives a curt beep.")
   
