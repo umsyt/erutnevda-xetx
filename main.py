@@ -24,7 +24,7 @@ desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "dr":"A [keypad] and a device.",
         "dar":"Nothing but a scrap of [paper].",
         "dkr":"Another [keypad]? This one has a full keyboard.",
-        "war":"nothing yet. war",
+        "war":"You barge in and see some slots you can [fill <object> <1/2/3>].",
         "car":"Mostly empty. Just a [blue-rock].",
         "wkr":"Mostly empty. Just a [red-rock].",
         "ckr":"Mostly empty. Just a [green-rock]."}
@@ -38,8 +38,8 @@ objs = {
   "blue-rock":"car"
 }
 slots = {
-  "1" : ""
-  "2" : ""
+  "1" : "",
+  "2" : "",
   "3" : ""
 }
 
@@ -169,6 +169,17 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
     print("You now have the blue rock.")
     objs["blue-rock"] = "inv"
     desc[me["loc"]] = nune
+
+  if act[0] == "drop":
+    if objs[act[1]] == "inv":
+      objs[act[1]] = me["loc"]
+
+  if rp("fill", "war"):
+    objs[act[1]] = "war"
+    slots[act[2]] = act[1] 
+
+  if act[0] == "what-a-slot":
+    print(slots)
 
   if act[0] == "letmeoutp":
     solved = True
