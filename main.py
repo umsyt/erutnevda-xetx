@@ -24,10 +24,10 @@ desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "dr":"A [keypad] and a device.",
         "dar":"Nothing but a scrap of [paper].",
         "dkr":"Another [keypad]? This one has a full keyboard.",
-        "war":"You barge in and see some slots you can [fill <object> <1/2/3>].",
-        "car":"Mostly empty. Just a [blue-rock].",
-        "wkr":"Mostly empty. Just a [red-rock].",
-        "ckr":"Mostly empty. Just a [green-rock]."}
+        "war":"You \033[94mb\033[0ma\033[91mr\033[92mg\033[0me in and see some slots you can [fill <object> <1/2/3>].",
+        "car":"Mostly empty. Just a <blue-rock> which you can [take].",
+        "wkr":"Mostly empty. Just a <red-rock> which you can [take].",
+        "ckr":"Mostly empty. Just a <green-rock> which you can [take]."}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -45,7 +45,7 @@ slots = {
 
 print("""
 BRAINDOWN: THE INTERACTIVE FRICTION
-v.0.2.1 (all rooms?)
+v.1.0.0 (technically all puzzles are implemented)
 Welcome, dear traveler to-
 to...
 Honestly, I don't know where.
@@ -155,36 +155,39 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
       print("bad key...")
   nune = "Mostly empty."
 
-  if rp("red-rock", objs["red-rock"]) :
-    print("You now have the red rock.")
-    objs["red-rock"] = "inv"
-    desc[me["loc"]] = nune
-
-  if rp("green-rock", objs["green-rock"]):
-    print("You now have the green rock.")
-    objs["green-rock"] = "inv"
-    desc[me["loc"]] = nune
-
-  if rp("blue-rock", objs["blue-rock"]):
-    print("You now have the blue rock.")
-    objs["blue-rock"] = "inv"
-    desc[me["loc"]] = nune
-
   if act[0] == "drop":
     if objs[act[1]] == "inv":
       objs[act[1]] = me["loc"]
 
+  if act[0] == "take":
+    if objs[act[1]] == me["loc"]:
+      objs[act[1]] = "inv"
+    for i in slots:
+      if slots[i] == act[1]:
+        slots[i] = ""
+  
   if rp("fill", "war"):
-    objs[act[1]] = "war"
-    slots[act[2]] = act[1] 
+    try:
+      if objs[act[1]] == "inv" and slots[act[2]] == "": 
+        objs[act[1]] = "war"
+        slots[act[2]] = act[1] 
+    except:
+      print("oh dear, that didn't work...")
 
   if act[0] == "what-a-slot":
     print(slots)
+
+  if slots == {'1': 'blue-rock', '2': 'red-rock', '3': 'green-rock'}:
+    print("The room trembles as the energies align...")
+    print()
+    solved = True
 
   if act[0] == "letmeoutp":
     solved = True
 
 
-print("""\n come back soon...
-- MORE PUZZLES!!
-- A STORY MAYBE!!!""")
+print("""
+You have escaped the strange area!
+Live the rest of your wonderful life! At least for now...
+
+demo over. come back for better mechanics, secret rooms, and a story maybe.""")
