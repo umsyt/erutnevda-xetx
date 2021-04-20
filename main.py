@@ -222,6 +222,20 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
     
     """)
 
+  if rp("open-sesame", "xyzzy") or (act == ["open", "sesame"] and me["loc"] == "xyzzy"):
+    print("e2 56 76 16 27 66 96 37 37 f6 d2 86 37 96 d6 16 56 57 17 37 02 37 96 02 46 27 f6 77 02 36 96 76 16 d6 02 56 86 45")
+
+  if rp("squeamish-ossifrage", "xyzzy"):
+    print("""
+    yes! have a cookie!
+                              oooo         o8o            
+                              `888         `"'            
+ .ooooo.   .ooooo.   .ooooo.   888  oooo  oooo   .ooooo.  
+d88' `"Y8 d88' `88b d88' `88b  888 .8P'   `888  d88' `88b 
+888       888   888 888   888  888888.     888  888ooo888 
+888   .o8 888   888 888   888  888 `88b.   888  888    .o 
+`Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o o888o `Y8bod8P' """)
+
 
   if act[0] == "letmeoutp":
     solved = True
