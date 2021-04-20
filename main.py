@@ -10,7 +10,7 @@ def parse(quer):
   return act
 
 me = {"loc": "cr"}
-exits = {"cr":{"d" : "dr", "w": "wr"},
+exits = {"cr":{"d" : "dr", "w": "wr", "plugh":"xyzzy"},
         "dr":{"d" : "wr", "w": "cr"},
         "wr":{"d" : "cr", "w": "dr"},
         "dar":{"k" : "dr"},
@@ -18,7 +18,8 @@ exits = {"cr":{"d" : "dr", "w": "wr"},
         "war":{"d" : "car", "w" : "dar"},
         "wkr":{"d" : "ckr", "w" : "dkr"},
         "car":{"d" : "dar", "w" : "war"},
-        "ckr":{"d" : "dkr", "w" : "wkr"}}
+        "ckr":{"d" : "dkr", "w" : "wkr"},
+        "xyzzy":{"unplugh": "cr"}}
 desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "wr":"Also dark. There seems to be a switch which you can [toggle].",
         "dr":"A [keypad] and a device.",
@@ -27,7 +28,8 @@ desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "war":"You \033[94mb\033[0ma\033[91mr\033[92mg\033[0me in and see some slots you can [fill <object> <1/2/3>].",
         "car":"Mostly empty. Just a <blue-rock> which you can [take].",
         "wkr":"Mostly empty. Just a <red-rock> which you can [take].",
-        "ckr":"Mostly empty. Just a <green-rock> which you can [take]."}
+        "ckr":"Mostly empty. Just a <green-rock> which you can [take].",
+        "xyzzy":"Welkom 2 da sekrett room!\nThere's not much doe. U can [unplugh] iff you want..."}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -87,7 +89,8 @@ while not solved and not tvtsr:
 
   print("current exits:")
   for i in exits[me['loc']].keys():
-    print(abrv[i])
+    if i not in ["plugh", "unplugh"]:
+      print(abrv[i])
   
   #ask
   act = parse("do?  ")
@@ -99,7 +102,7 @@ while not solved and not tvtsr:
     global act, me
     return act[0] == a and me['loc'] == p
 
-  if act[0] in "dawk":
+  if act[0] in "dawk" or act[0] == "plugh":
     me['loc'] = exits[me['loc']][act[0]]
   
   if act[0] in ["i", "inv", "inventory"]:
@@ -181,6 +184,14 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
     print("The room trembles as the energies align...")
     print()
     solved = True
+
+  if me["loc"] == "cr":
+    hm = random.randint(1,10)
+    if hm == 7:
+      print("A hullow voice says [plugh]...")
+
+  if rp("unplugh", "xyzzy"):
+    me["loc"] = "cr"
 
   if act[0] == "letmeoutp":
     solved = True
