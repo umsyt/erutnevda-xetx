@@ -29,7 +29,7 @@ desc = {"cr":"A dark, seemingly dingy room. You can make out a screen.",
         "car":"Mostly empty. Just a <blue-rock> which you can [take].",
         "wkr":"Mostly empty. Just a <red-rock> which you can [take].",
         "ckr":"Mostly empty. Just a <green-rock> which you can [take].",
-        "xyzzy":"Welkom 2 da sekrett room!\nThere's not much doe. U can [unplugh] iff you want..."}
+        "xyzzy":"Welkom 2 da sekrett room!\nThere's not much doe. U can [unplugh] iff you want...\nTry some magick wordz"}
 abrv = {"d": "[d]eosil",
         "w": "[w]iddershins",
         "a": "[a]na",
@@ -192,6 +192,36 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
 
   if rp("unplugh", "xyzzy"):
     me["loc"] = "cr"
+
+
+  if rp("please", "xyzzy"):
+    print("""
+                                                                                                _   _   _                 _            _ 
+                 | | | | | |               | |          | |
+   __ _ _ __   __| | | |_| |__   __ _ _ __ | | __  _   _| |
+  / _` | '_ \ / _` | | __| '_ \ / _` | '_ \| |/ / | | | | |
+ | (_| | | | | (_| | | |_| | | | (_| | | | |   <  | |_| |_|
+  \__,_|_| |_|\__,_|  \__|_| |_|\__,_|_| |_|_|\_\  \__,_(_)   
+""")
+
+  if rp("abracadabra", "xyzzy"):
+    print("""
+                                                                                 _     _   _   _   _   _   _     _   _     _     _   _   _   _  
+  / \   / \ / \ / \ / \ / \ / \   / \ / \   / \   / \ / \ / \ / \ 
+ ( i ) ( c | r | e | a | t | e ) ( a | s ) ( i ) ( c | o | d | e )
+  \_/   \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/   \_/   \_/ \_/ \_/ \_/  
+""")
+
+  if rp("hocus-pocus", "xyzzy") or (act == ["hocus", "pocus"] and me["loc"] == "xyzzy"):
+    print("""
+    //   / / //   ) ) //   ) )  //   / / //   ) )   // 
+   //___    //   / / //        //   / / ((         //  
+  / ___    //   / / //        //   / /    \\      //   
+ //       //   / / //        //   / /       ) )        
+//       ((___/ / ((____/ / ((___/ / ((___ / /  //     
+    
+    """)
+
 
   if act[0] == "letmeoutp":
     solved = True
