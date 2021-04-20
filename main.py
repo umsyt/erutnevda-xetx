@@ -234,7 +234,9 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
 d88' `"Y8 d88' `88b d88' `88b  888 .8P'   `888  d88' `88b 
 888       888   888 888   888  888888.     888  888ooo888 
 888   .o8 888   888 888   888  888 `88b.   888  888    .o 
-`Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o o888o `Y8bod8P' """)
+`Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o o888o `Y8bod8P' 
+
+""")
 
 
   if act[0] == "letmeoutp":
