@@ -47,7 +47,7 @@ slots = {
 
 print("""
 BRAINDOWN: THE INTERACTIVE FRICTION
-v.1.0.0 (technically all puzzles are implemented)
+v.1.0.2 (secrecy...)
 Welcome, dear traveler to-
 to...
 Honestly, I don't know where.
