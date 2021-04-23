@@ -196,7 +196,7 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
 
   if rp("please", "xyzzy"):
     print("""
-                                                                                                _   _   _                 _            _ 
+                  _   _   _                 _            _ 
                  | | | | | |               | |          | |
    __ _ _ __   __| | | |_| |__   __ _ _ __ | | __  _   _| |
   / _` | '_ \ / _` | | __| '_ \ / _` | '_ \| |/ / | | | | |
@@ -206,7 +206,7 @@ You can now move in directions [a]na and [k]ata in TOS enabled rooms            
 
   if rp("abracadabra", "xyzzy"):
     print("""
-                                                                                 _     _   _   _   _   _   _     _   _     _     _   _   _   _  
+   _     _   _   _   _   _   _     _   _     _     _   _   _   _  
   / \   / \ / \ / \ / \ / \ / \   / \ / \   / \   / \ / \ / \ / \ 
  ( i ) ( c | r | e | a | t | e ) ( a | s ) ( i ) ( c | o | d | e )
   \_/   \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/   \_/   \_/ \_/ \_/ \_/  
